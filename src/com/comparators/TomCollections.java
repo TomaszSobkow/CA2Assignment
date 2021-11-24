@@ -1,6 +1,6 @@
 package com.comparators;
 
-import com.lists.TomsArrayList;
+import com.tomslists.TomsArrayList;
 import com.vehicles.Vehicle;
 
 

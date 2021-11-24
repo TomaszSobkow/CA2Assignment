@@ -1,19 +1,26 @@
-package com.lists;
+package com.tomslists;
 
 import com.interfaces.IList;
-
 import java.util.Iterator;
 
-public class TomsLinkedList<T> implements IList<T> {
+public class TomsArrayList<T> implements IList<T> {
 
         @Override
-        public void add(Object element) {  }
+        public void add(Object element) {   }
 
         @Override
         public void add(int index, Object element) {  }
 
         @Override
-        public void set(int index, Object element) {  }
+        public T set(int index, T element) { return null; }
+
+        @Override
+        public Iterator<T> iterator() { return null; }
+
+        @Override
+        public boolean isEmpty() {
+            return false;
+        }
 
         @Override
         public int size() { return 0; }
@@ -28,13 +35,6 @@ public class TomsLinkedList<T> implements IList<T> {
         public boolean remove(Object element) { return false; }
 
         @Override
-        public boolean isEmpty() { return false; }
-
-        @Override
         public boolean contains(Object element) { return false; }
 
-        @Override
-        public Iterator iterator() { return IList.super.iterator(); }
-
 }
-

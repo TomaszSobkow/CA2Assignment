@@ -1,6 +1,6 @@
 package com;
 
-import com.lists.TomsArrayList;
+import com.tomslists.TomsArrayList;
 import com.vehicles.Audi;
 import com.vehicles.Honda;
 import com.vehicles.Vehicle;
@@ -15,7 +15,8 @@ public class Main {
 
          Main main = new Main();
          main.addCarToArray();
-         main.printAllVehicles();
+        // main.printAllVehicles();
+         main.printFromTomArrayList();
     }
 
     public void addCarToArray(){
@@ -31,9 +32,8 @@ public class Main {
 
     public void printAllVehicles(){
         int noOfCars = 1;
-        for (Vehicle v : vehicles){
-            System.out.println("--------------------------------------------------"+"\n"+ noOfCars+". "+v);
-            noOfCars++;
+        for (int index = 0; index > vehiclesInTomArray.size(); index++){
+            System.out.println(vehiclesInTomArray.get(index));
         }
     }
 
