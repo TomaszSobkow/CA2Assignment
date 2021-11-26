@@ -1,12 +1,13 @@
-package com.comparators;
+package com.collection;
 
-import com.tomslists.TomsArrayList;
+import com.comparators.CarComparator;
+import com.tomslists.GenericArrayList;
 import com.vehicles.Vehicle;
 
 
 public class TomCollections {
 
-    public static void sort(TomsArrayList<Vehicle> vehicleListToSort){
+    public static void sort(GenericArrayList<Vehicle> vehicleListToSort){
         for (int index = 0; index < vehicleListToSort.size(); index++){
             for(int i = 0; i < vehicleListToSort.size() -1 -index; i++){
                 if(vehicleListToSort.get(i).compareTo(vehicleListToSort.get( i+1 )) > 0){
@@ -18,7 +19,7 @@ public class TomCollections {
         }
     }
 
-    public static void sort(TomsArrayList<Vehicle> vehiclesListToSort, CarComparator comparator){
+    public static void sort(GenericArrayList<Vehicle> vehiclesListToSort, CarComparator comparator){
         for (int index = 0; index < vehiclesListToSort.size(); index++){
             for(int innerIndex = 0; innerIndex < vehiclesListToSort.size() - 1 - index; innerIndex++){
                 if(comparator.compare(vehiclesListToSort.get(innerIndex), vehiclesListToSort.get(innerIndex +1)) > 0){

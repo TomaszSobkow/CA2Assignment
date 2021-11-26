@@ -24,6 +24,14 @@ public abstract class Vehicle implements CarComparable {
         this.model = model;
     }
 
+    public void updateAcceleration(Acceleration ac){
+        this.acceleration = ac;
+    }
+
+    public void updateConsumption(Consumption co){
+        this.consumption = co;
+    }
+
     @Override
     public int compareTo(Vehicle vehicle) {
         return (this.regNumber.compareTo(vehicle.getRegNumber()));
@@ -34,7 +42,7 @@ public abstract class Vehicle implements CarComparable {
         return   "" + model +
                 "\nEnginePower      :  " + enginePower + " Hp" +
                 "\nEngineSize       :  " + engineSize + " cm3"+
-                "\nWei    ght       :  " + weight + " kg"+
+                "\nWeight           :  " + weight + " kg"+
                 "\nRegNumber        :  " + regNumber;
     }
 

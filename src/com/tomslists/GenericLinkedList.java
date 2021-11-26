@@ -1,10 +1,11 @@
 package com.tomslists;
 
 import com.interfaces.IList;
-
 import java.util.Iterator;
 
-public class TomsLinkedList<T> implements IList<T> {
+public class GenericLinkedList<T> implements IList<T> {
+
+
 
         @Override
         public void add(T element) { }
@@ -19,13 +20,15 @@ public class TomsLinkedList<T> implements IList<T> {
         public T get(int index) { return null; }
 
         @Override
-        public T remove(int index) { return null; }
+        public void remove(int index) {
+
+        }
 
         @Override
         public int size() { return 0; }
 
         @Override
-        public boolean remove(T element) { return false; }
+        public void remove(T element) {}
 
         @Override
         public boolean isEmpty() { return false; }
