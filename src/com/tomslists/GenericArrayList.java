@@ -2,6 +2,7 @@ package com.tomslists;
 
 import com.exceptions.MyException;
 import com.interfaces.IList;
+
 import java.util.Iterator;
 
 public class GenericArrayList<T>  implements IList<T> {
@@ -9,9 +10,9 @@ public class GenericArrayList<T>  implements IList<T> {
         private T[] buffer;
         private int nextFree;
         private int currentArrayCapacity;
-        private final int initArray = 2;
+        private final int initArray = 1;
 
-        @SuppressWarnings("unchecked")
+
         public GenericArrayList(){
                 currentArrayCapacity = initArray;
                 nextFree = 0;
@@ -47,6 +48,7 @@ public class GenericArrayList<T>  implements IList<T> {
         @SuppressWarnings("unchecked")
         private void extendArraySize() throws MyException {
                 if(nextFree == currentArrayCapacity){
+
                         T[] tempArray = (T[])new Object[buffer.length *2];
                         currentArrayCapacity *=2;
                         for(int i = 0; i < buffer.length; i++){
@@ -57,8 +59,13 @@ public class GenericArrayList<T>  implements IList<T> {
         }
 
         @Override
-        public T set(int index, T element) {
-                return null; }
+        public  void set(int index, T element) {
+               if(index < nextFree){
+                        buffer[index] = element;
+               }else {
+                       System.out.println("There is no Object on index " + index);
+               }
+        }
 
         @Override
         public Iterator<T> iterator() {
@@ -76,33 +83,46 @@ public class GenericArrayList<T>  implements IList<T> {
         @Override
         public T get(int index) {
                 if( index >= nextFree){
+                        System.out.println("No Object on index " + index);
                         return null;
                 }
                 return buffer[index];
         }
 
         @Override
-        public  void remove(int index) {
-                if(index <= nextFree){
+        public  void remove(int objectPosition) throws MyException {
+                int index = objectPosition -1;
+
+                if(index < nextFree  && index >= 0  ){
+                        System.out.println("\nThe OBJECT  "+ buffer[index] + " REMOVED !!!" );
                         for(int i = index; i < nextFree; i++){
                                 buffer[i] = buffer[i + 1];
                         }
+
                         nextFree--;
+                }else {
+                        throw new MyException("There is no object on position  "+ objectPosition);
                 }
         }
 
         @Override
-        public void remove(T element) {
+        public boolean remove(T element) {
                 boolean isMatch =  false;
-        for(int index = 0; index < nextFree && isMatch; index++){
+        for(int index = 0; index < nextFree; index++){
                 if(buffer[index].equals(element)) {
                         isMatch = true;
                         for(int i = index; i < nextFree; i++){
                                 buffer[i] = buffer[i +1];
                         }
+                        System.out.println("\n****************\nOBJECT "+"\n"+
+                                           element +"\nFOUND AND REMOVED !!\"\n****************");
                         nextFree--;
                 }
         }
+        if(!isMatch){
+                System.out.println( "\nUNKNOWN OBJECT -> "+element );
+        }
+        return isMatch;
         }
 
         @Override
@@ -113,7 +133,6 @@ public class GenericArrayList<T>  implements IList<T> {
                         isMatch = true;
                 }
                 return isMatch; }
-
 
 
 }
