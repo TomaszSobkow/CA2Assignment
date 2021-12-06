@@ -1,7 +1,6 @@
 package com.person;
 
 import com.comparators.PersonComparable;
-import com.comparators.PersonComparator;
 
 public class Person implements PersonComparable<Person> {
 

@@ -1,30 +1,33 @@
 package com;
 
 import com.collection.TomCollections;
-import com.comparators.CompareSurname;
-import com.comparators.PersonComparator;
+import com.comparators.CompareSureName;
 import com.exceptions.MyException;
 import com.person.Person;
 import com.tomslists.GenericArrayList;
 
-import java.util.Properties;
-
 public class Main {
-
 
     public GenericArrayList<Person> persons = new GenericArrayList<>();
 
-    public static void main(String[] args) throws MyException {
+    public static void main(String[] args)  throws MyException{
+       new Main().testGenericArrayList();
+    }
 
+
+    /**
+     * Use it to test GenericArrayList
+     */
+    public void testGenericArrayList() throws MyException{
         /**Creating test class object and population of arrayList of Person objects
          */
-         Main main = new Main();
-         main.addPersonToArrayList();
-         Person newPerson = new Person(100, "TEST", "TEST");
-         main.persons.add(newPerson);
+        Main main = new Main();
+        main.addPersonToArrayList();
+        Person newPerson = new Person(100, "TEST", "TEST");
+        main.persons.add(newPerson);
 
-         /**Printing all object in a GenericArrayList*/
-         main.printFromTomArrayList("Original List:");
+        /**Printing all object in a GenericArrayList*/
+        main.printFromTomArrayList("Original List:");
 
         /**
          * Persons GenericArrayList sorted by Age and reprinted
@@ -35,7 +38,7 @@ public class Main {
         /**
          * Persons GenericArrayList sorted by surName
          */
-        TomCollections.sort(main.persons, new CompareSurname());
+        TomCollections.sort(main.persons, new CompareSureName());
         main.printFromTomArrayList("Sorted List based on natural ordering (SureName):");
 
         /**
@@ -53,13 +56,13 @@ public class Main {
 
 
         /**Removing an object from existing arrayList and reprint all list*/
-         main.persons.remove(1);
-         main.printFromTomArrayList("Printing updated List");
+        main.persons.remove(1);
+        main.printFromTomArrayList("Printing updated List");
 
         /**
          * Removing Object by object type and testing equals method
          */
-        main.persons.remove(new Person(23,"",""));
+        main.persons.remove(new Person(0,"",""));
         main.persons.remove(newPerson);
         main.printFromTomArrayList("Printing updated List");
     }
@@ -76,11 +79,14 @@ public class Main {
     }
 
 
-    public <T> void printFromTomArrayList(String message){
+    public  void printFromTomArrayList(String message){
         System.out.println("\n\t"+ message);
         int noOfPersons = 1;
         for (int index = 0; index < persons.size(); index++){
             System.out.println( noOfPersons++ +". "+persons.get(index));
         }
+//        for(Person p : persons){
+//            System.out.println(p);
+//        }
     }
 }
