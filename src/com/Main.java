@@ -1,9 +1,13 @@
 package com;
 
 import com.collection.TomCollections;
+import com.comparators.CompareSurname;
+import com.comparators.PersonComparator;
 import com.exceptions.MyException;
 import com.person.Person;
 import com.tomslists.GenericArrayList;
+
+import java.util.Properties;
 
 public class Main {
 
@@ -20,18 +24,35 @@ public class Main {
          main.persons.add(newPerson);
 
          /**Printing all object in a GenericArrayList*/
-        //System.out.println("Unsorted GenericArrayList");
          main.printFromTomArrayList("Original List:");
 
         /**
-         * Persons array sorted by Age and reprinted
+         * Persons GenericArrayList sorted by Age and reprinted
          */
         TomCollections.sort(main.persons);
-        //System.out.println("\nSorted GenericArrayList ");
         main.printFromTomArrayList("Sorted List based on natural ordering (age):");
 
+        /**
+         * Persons GenericArrayList sorted by surName
+         */
+        TomCollections.sort(main.persons, new CompareSurname());
+        main.printFromTomArrayList("Sorted List based on natural ordering (SureName):");
 
-         /**Removing an object from existing arrayList and reprint all list*/
+        /**
+         * Testing contains method from GenericArrayList
+         *
+         * testContainsMethod negative
+         * newPerson positive
+         */
+        Person testContainsMethod = new Person(333,"unknown","unknown");
+        if(main.persons.contains(newPerson)){
+            System.out.println("\nOBJECT\n"+ newPerson+"\nFOUND ON THE LIST");
+        }else {
+            System.out.println("OBJECT\n" + newPerson+ "\nNOT FOUND ON THE LIST !!!");
+        }
+
+
+        /**Removing an object from existing arrayList and reprint all list*/
          main.persons.remove(1);
          main.printFromTomArrayList("Printing updated List");
 
@@ -41,7 +62,6 @@ public class Main {
         main.persons.remove(new Person(23,"",""));
         main.persons.remove(newPerson);
         main.printFromTomArrayList("Printing updated List");
-
     }
 
     /**Populate a GenericArrayList*/

@@ -1,8 +1,9 @@
 package com.person;
 
-import java.util.Objects;
+import com.comparators.PersonComparable;
+import com.comparators.PersonComparator;
 
-public class Person implements Comparable<Person>{
+public class Person implements PersonComparable<Person> {
 
     private int age;
     private String surName;
@@ -29,16 +30,15 @@ public class Person implements Comparable<Person>{
             if(tempPerson.getName().equals(this.getName()) && tempPerson.getSurName().equals(this.getSurName())){
                tempAge =   Integer.compare(tempPerson.getAge(), this.getAge());
             }
-
         }
         return tempAge == 0;
     }
-
 
     @Override
     public int compareTo(Person o) {
         return Integer.compare(this.age, o.age);
     }
+
 
     public int getAge() { return age; }
     public void setAge(int age) { this.age = age; }
@@ -53,8 +53,10 @@ public class Person implements Comparable<Person>{
     public String toString() {
         return "Person{ " +
                 "FirstName ='" + name +'\''+
-                ", SurName='" + surName + '\'' +
+                ", SureName='" + surName + '\'' +
                 ", Age='" + age +'\''+
                 '}';
     }
+
+
 }

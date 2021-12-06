@@ -2,7 +2,6 @@ package com.tomslists;
 
 import com.exceptions.MyException;
 import com.interfaces.IList;
-
 import java.util.Iterator;
 
 public class GenericArrayList<T>  implements IList<T> {
@@ -12,7 +11,7 @@ public class GenericArrayList<T>  implements IList<T> {
         private int currentArrayCapacity;
         private final int initArray = 1;
 
-
+        @SuppressWarnings("unchecked")
         public GenericArrayList(){
                 currentArrayCapacity = initArray;
                 nextFree = 0;
@@ -92,13 +91,11 @@ public class GenericArrayList<T>  implements IList<T> {
         @Override
         public  void remove(int objectPosition) throws MyException {
                 int index = objectPosition -1;
-
                 if(index < nextFree  && index >= 0  ){
                         System.out.println("\nThe OBJECT  "+ buffer[index] + " REMOVED !!!" );
                         for(int i = index; i < nextFree; i++){
                                 buffer[i] = buffer[i + 1];
                         }
-
                         nextFree--;
                 }else {
                         throw new MyException("There is no object on position  "+ objectPosition);
@@ -127,12 +124,11 @@ public class GenericArrayList<T>  implements IList<T> {
 
         @Override
         public boolean contains(T element) {
-
                 boolean isMatch = false;
-                for(int index = 0; index < nextFree && !isMatch; index++){
-                        isMatch = true;
+                for(int index = 0; index < nextFree; index++){
+                        if(buffer[index].equals(element)){
+                                isMatch = true;
+                        }
                 }
                 return isMatch; }
-
-
 }
