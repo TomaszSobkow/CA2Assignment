@@ -18,7 +18,9 @@ public class GenericStack <T> implements IQueue, IStack {
 
 
     @Override
-    public Object push(Object element) { return null; }
+    public Object push(Object element) {
+        stackData.add(0, (T) element);
+        return null; }
     @Override
     public Object pop() { return null; }
     @Override
