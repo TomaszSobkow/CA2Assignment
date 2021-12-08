@@ -2,14 +2,13 @@ package com.tomslists;
 
 import com.exceptions.MyException;
 import com.interfaces.IList;
-import com.person.Person;
-
 import java.util.Iterator;
+
 
 public class GenericArrayList<T>  implements IList<T> , Iterable<T>{
 
         private T[] buffer;
-        private int nextFree;
+        private int nextFree ;
         private int currentArrayCapacity;
         private final int initArray = 1;
 
@@ -78,7 +77,7 @@ public class GenericArrayList<T>  implements IList<T> , Iterable<T>{
         }
 
         @Override
-        public int size() {
+        public int  size() {
                 return nextFree; }
 
         @Override
@@ -134,13 +133,13 @@ public class GenericArrayList<T>  implements IList<T> , Iterable<T>{
                 }
                 return isMatch; }
 
+
+
         public int getNextFree() {
                 return nextFree;
         }
-
         public T[] getBuffer() {
                 return buffer;
         }
-
 
 }
