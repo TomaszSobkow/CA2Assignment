@@ -1,2 +1,6 @@
-package com.MyPackage;public class JustSimpleClass {
+package com.MyPackage;
+
+public class JustSimpleClass {
+
+    private String myClass;
 }
